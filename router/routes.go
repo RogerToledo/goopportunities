@@ -2,7 +2,6 @@ package router
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/me/goopportunities/handler"
 	"github.com/me/goopportunities/handler/opening"
 )
 
