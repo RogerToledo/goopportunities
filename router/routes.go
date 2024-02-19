@@ -16,5 +16,5 @@ func initializeRoutes(router *gin.Engine) {
 
 	v1.PUT("opening", opening.UpdateOpening)
 
-	v1.GET("opening", opening.ListOpening)	
+	v1.GET("openings", opening.ListOpening)	
 }	
