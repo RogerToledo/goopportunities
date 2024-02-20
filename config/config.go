@@ -13,7 +13,7 @@ var (
 
 func Init() error {
 	var err error
-	
+
 	db, err = InitializeSQLite()
 	if err != nil {
 		return fmt.Errorf("sqlite init error: %v", err)
@@ -26,7 +26,7 @@ func GetSQLite() *gorm.DB {
 }
 
 func GetLogger(p string) *Logger {
-	logger := NewLogger(p)
+	logger = NewLogger(p)
 
 	return logger
 }
