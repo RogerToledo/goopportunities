@@ -24,7 +24,11 @@ It was developed following a tutorial from [Arthur 404 dev](https://www.youtube.
 ## How to run
 1. Clone this repository
 2. Run `go run main.go` to start the server
-3. Access `http://localhost:8080/swagger/index.html` to see the API documentation
+
+Obs: If database is not created, it will be created when the server starts
+
+## Swagger
+Access `http://localhost:8080/swagger/index.html` to see the API documentation
 
 ## Author
 [Roger Toledo](https://github.com/RogerToledo)
