@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-type CreateOpeningRequest struct {
+type UpsertOpeningRequest struct {
 	Role     string `json:"role"`
 	Company  string `json:"company"`
 	Location string `json:"location"`
@@ -14,7 +14,7 @@ type CreateOpeningRequest struct {
 	Salary   int64  `json:"salary"`
 }
 
-func (r *CreateOpeningRequest) Validate() map[string]string {
+func (r *UpsertOpeningRequest) ValidateCreate() map[string]string {
 	var invalidFields = make(map[string]string)
 
 	if r.Role == "" {
@@ -40,8 +40,16 @@ func (r *CreateOpeningRequest) Validate() map[string]string {
 	if r.Salary <= 0 {
 		invalidFields["salary"] = "int64"
 	}
-	
+
 	return invalidFields
+}
+
+func (r *UpsertOpeningRequest) ValidateUpdate() error {
+	if r.Role != "" || r.Company != "" || r.Location != "" || r.Remote != nil || r.Link != "" || r.Salary > 0 {
+		return nil
+	}
+
+	return fmt.Errorf("at least one field must be filled")
 }
 
 func ErrParamRequired(invalidFields map[string]string) string {

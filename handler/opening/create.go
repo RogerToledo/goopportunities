@@ -11,11 +11,11 @@ import (
 )
 
 func CreateOpening(ctx *gin.Context) {
-	request := handler.CreateOpeningRequest{}
+	request := handler.UpsertOpeningRequest{}
 
 	ctx.BindJSON(&request)
 
-	fields := request.Validate()
+	fields := request.ValidateCreate()
 	if len(fields) > 0 {
 		msg := handler.ErrParamRequired(fields)
 		handler.SendError(ctx, http.StatusBadRequest, msg)
