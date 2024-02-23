@@ -28,5 +28,3 @@ It was developed following a tutorial from [Arthur 404 dev](https://www.youtube.
 
 ## Author
 [Roger Toledo](https://github.com/RogerToledo)
-```
-

@@ -17,3 +17,4 @@ docs:
 clean:
 	rm -f $(APP_NAME)
 	rm -rf ./docs	
+	
