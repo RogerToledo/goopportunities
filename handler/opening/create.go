@@ -10,6 +10,18 @@ import (
 	"github.com/me/goopportunities/schemas"
 )
 
+// @BasePath /api/v1
+
+// @Summary Create opening
+// @Description Create a new opening
+// @Tags opening
+// @Accept  json
+// @Produce  json
+// @Param opening body handler.UpsertOpeningRequest true "Request body"
+// @Success 200 {object} handler.OpeningResponse
+// @Failure 400 {object} handler.ErrorResponse
+// @Failure 500 {object} handler.ErrorResponse
+// @Router /opening [post]
 func CreateOpening(ctx *gin.Context) {
 	request := handler.UpsertOpeningRequest{}
 

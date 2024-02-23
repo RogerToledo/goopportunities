@@ -10,6 +10,20 @@ import (
 	"github.com/me/goopportunities/schemas"
 )
 
+// @BasePath /api/v1
+
+// @Summary Update opening
+// @Description Update a new opening
+// @Tags opening
+// @Accept  json
+// @Produce  json
+// @Param id query string true "Opening ID"
+// @Param opening body handler.UpsertOpeningRequest true "Request body"
+// @Success 200 {object} handler.OpeningResponse
+// @Failure 400 {object} handler.ErrorResponse
+// @Failure 404 {object} handler.ErrorResponse
+// @Failure 500 {object} handler.ErrorResponse
+// @Router /opening [put]
 func UpdateOpening(ctx *gin.Context) {
 	db := config.GetSQLite()
 	opening := schemas.Opening{}
@@ -58,8 +72,10 @@ func UpdateOpening(ctx *gin.Context) {
 		opening.Salary = request.Salary
 	}
 
-	if err := db.Save(opening).Error; err != nil {
+	if err := db.Save(&opening).Error; err != nil {
 		handler.SendError(ctx, http.StatusInternalServerError, err.Error())
 		return
 	}
+
+	handler.SendSuccess(ctx, "update opening", opening)
 }
